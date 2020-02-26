@@ -1,7 +1,7 @@
-from django.urls import path
-from . import views
+from rest_framework import routers
+from .api import PostViewSet
 
-urlpatterns = [
-    path('', views.home, name='blog-home'),
-    path('about/', views.about, name='blog-about'),
-]
+router = routers.DefaultRouter()
+router.register('posts', PostViewSet, 'posts')
+
+urlpatterns = router.urls
